@@ -9,10 +9,12 @@ class Message extends Component {
       render: true,
       editMode: false,
       timePosted: this.props.timePosted,
-      edited: false
+      edited: false,
+      searching: false
     };
     this.deletePost = this.deletePost.bind(this);
     this.submitEditedPost = this.submitEditedPost.bind(this);
+    this.toggleEmojiSearch = this.toggleEmojiSearch.bind(this);
     this.toggleEditMode = this.toggleEditMode.bind(this);
     this.contentRef = React.createRef();
   }
@@ -34,6 +36,13 @@ class Message extends Component {
   toggleEditMode() {
     this.setState({ editMode: !this.state.editMode });
     setTimeout(() => this.contentRef.current.focus(), 1);
+  }
+
+  toggleEmojiSearch() {
+    console.log("action fired");
+    this.setState({
+      searching: !this.state.searching
+    });
   }
 
   render() {
@@ -60,6 +69,8 @@ class Message extends Component {
         </button>
         <EmojiSearchContainer
           emojis={this.props.emojis}
+          searching={this.state.searching}
+          toggleEmojiSearch={this.toggleEmojiSearch}
           output={`#${this.props.id} .editMessageArea`}
         />
       </React.Fragment>

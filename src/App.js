@@ -64,7 +64,6 @@ export default class App extends Component {
   }
 
   toggleEmojiSearch() {
-    console.log("action fired");
     this.setState({
       searching: !this.state.searching
     });

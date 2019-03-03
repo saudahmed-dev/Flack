@@ -1,5 +1,38 @@
 import React from "react";
 
+/* example usage:
+  Parent:
+  ****************************************************************
+    <EmojiSearchContainer
+      emojis={this.state.emojis}
+      searching={this.state.searching}
+      toggleEmojiSearch={this.toggleEmojiSearch}
+      output="#inputPostForm"
+    />
+
+  constructor: 
+    state:
+    searching: false,
+    emojis: {}
+  this.toggleEmojiSearch = this.toggleEmojiSearch.bind(this);
+
+  ***************************************************************** 
+  Parent methods:
+
+  componentDidMount(){
+    Axios.get("https://api.github.com/emojis").then(data =>
+      this.setState({
+        emojis: data.data
+      })
+    );
+  }
+  toggleEmojiSearch() {
+      this.setState({
+        searching: !this.state.searching
+      });
+    }
+  */
+
 export default class EmojiSearchContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +47,9 @@ export default class EmojiSearchContainer extends React.Component {
   static getDerivedStateFromProps(props, state) {
     if (props.searching !== state.searching) {
       return {
-        searching: props.searching
+        searching: props.searching,
+        emojiSearchInput: "",
+        urls: []
       };
     }
     return null;
