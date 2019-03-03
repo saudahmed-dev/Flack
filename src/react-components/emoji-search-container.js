@@ -81,7 +81,7 @@ export default class EmojiSearchContainer extends React.Component {
   render() {
     let emojiSearchButton = (
       <div className="emojiButton" onClick={this.props.toggleEmojiSearch}>
-        <span className="fas fa-grin-stars">=-D</span>
+        <span className="fas fa-grin-stars" />
       </div>
     );
     let emojiSearchBar = (
