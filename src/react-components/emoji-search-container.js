@@ -3,17 +3,22 @@ import React from "react";
 export default class EmojiSearchContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { searching: false, emojiSearchInput: "", urls: [] };
-    this.toggleEmojiSearch = this.toggleEmojiSearch.bind(this);
+    this.state = {
+      searching: this.props.searching,
+      emojiSearchInput: "",
+      urls: []
+    };
     this.handleEmojiSearch = this.handleEmojiSearch.bind(this);
   }
 
-  toggleEmojiSearch() {
-    this.setState({
-      searching: !this.state.searching
-    });
+  static getDerivedStateFromProps(props, state) {
+    if (props.searching !== state.searching) {
+      return {
+        searching: props.searching
+      };
+    }
+    return null;
   }
-
   handleEmojiSearch(event) {
     this.setState({
       emojiSearchInput: event.target.value
@@ -42,9 +47,9 @@ export default class EmojiSearchContainer extends React.Component {
 
   render() {
     let emojiSearchButton = (
-      <div className="emojiButton" onClick={this.toggleEmojiSearch}>
+      <div className="emojiButton" onClick={this.props.toggleEmojiSearch}>
         <span className="fas fa-grin-stars" />
-        emoji
+        =-D
       </div>
     );
     let emojiSearchBar = (

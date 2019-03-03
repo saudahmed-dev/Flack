@@ -11,10 +11,12 @@ export default class App extends Component {
     this.state = {
       count: 0,
       emojis: {},
-      posts: []
+      posts: [],
+      searching: false
     };
     this.createPost = this.createPost.bind(this);
     this.deleteUnusedPosts = this.deleteUnusedPosts.bind(this);
+    this.toggleEmojiSearch = this.toggleEmojiSearch.bind(this);
     this.inputPostForm = React.createRef();
     this.createPostButton = React.createRef();
     this.messages = React.createRef();
@@ -49,7 +51,10 @@ export default class App extends Component {
           emojis={this.state.emojis}
         />
       );
-      this.setState({ posts: [...this.state.posts, newPost] });
+      this.setState({
+        posts: [...this.state.posts, newPost],
+        searching: false
+      });
       this.inputPostForm.current.innerText = "";
       let element = this.messages.current;
       element.scrollTop = element.scrollHeight;
@@ -57,6 +62,14 @@ export default class App extends Component {
       this.deleteUnusedPosts();
     }
   }
+
+  toggleEmojiSearch() {
+    console.log("action fired");
+    this.setState({
+      searching: !this.state.searching
+    });
+  }
+
   componentDidUpdate() {}
 
   deleteUnusedPosts() {
@@ -99,6 +112,8 @@ export default class App extends Component {
                 </div>
                 <EmojiSearchContainer
                   emojis={this.state.emojis}
+                  searching={this.state.searching}
+                  toggleEmojiSearch={this.toggleEmojiSearch}
                   output="#inputPostForm"
                 />
               </div>
