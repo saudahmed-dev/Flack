@@ -1,0 +1,137 @@
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+}
+
+.appBody {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 90vh;
+}
+#inputPostForm {
+  margin-left: 0.1vw;
+  overflow: auto;
+  width: 40vw;
+  min-height: 2vw;
+  background-color: white;
+}
+#inputForm {
+  margin-top: 1vw;
+  display: flex;
+  position: fixed;
+}
+input:focus {
+  background-color: lightsteelblue;
+}
+.contacts {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  border-radius: 3px;
+  min-width: 15vw;
+  min-height: 94.1vh;
+}
+
+.emoji {
+  max-height: 20px;
+  margin-top: 0;
+}
+.emojiSearchResults {
+  max-width: 9vw;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.messageSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 40.5vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.editMessageArea {
+  min-height: inherit;
+  max-width: inherit;
+}
+
+.sendButton,
+.emojiButton {
+  border: lightslategray;
+  border-style: solid;
+  margin-left: 0.1vw;
+  border-width: 1px;
+  border-radius: 3px;
+  background: lightgrey;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sendButton:hover,
+.emojiButton:hover {
+  transform: scale(1.2);
+  background: darkgray;
+}
+
+.sendButton:after,
+.emojiButton:after {
+  transition: 0.5s;
+}
+
+.message {
+  min-height: 1vmin;
+  max-width: 40vw;
+  background-color: snow;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 4px;
+  padding: 7px;
+  overflow-wrap: break-word;
+}
+
+.messageText {
+  background-color: white;
+  overflow-wrap: break-word;
+}
+
+#messages {
+  overflow-y: scroll;
+}
+
+.navbar {
+  background-color: dimgray;
+  color: white;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  font-size: calc(10px + 2vmin);
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
