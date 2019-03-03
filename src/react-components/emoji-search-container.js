@@ -1,8 +1,9 @@
 import React from "react";
 
 /* example usage:
-  Parent:
   ****************************************************************
+  Parent:
+
     <EmojiSearchContainer
       emojis={this.state.emojis}
       searching={this.state.searching}
@@ -11,6 +12,7 @@ import React from "react";
     />
 
   constructor: 
+
     state:
     searching: false,
     emojis: {}
@@ -38,7 +40,6 @@ export default class EmojiSearchContainer extends React.Component {
     super(props);
     this.state = {
       searching: this.props.searching,
-      emojiSearchInput: "",
       urls: []
     };
     this.handleEmojiSearch = this.handleEmojiSearch.bind(this);
@@ -48,19 +49,16 @@ export default class EmojiSearchContainer extends React.Component {
     if (props.searching !== state.searching) {
       return {
         searching: props.searching,
-        emojiSearchInput: "",
         urls: []
       };
     }
     return null;
   }
   handleEmojiSearch(event) {
-    this.setState({
-      emojiSearchInput: event.target.value
-    });
-    if (this.state.emojiSearchInput.length > 2) {
+    const searchInput = event.target.value;
+    if (searchInput.length >= 3) {
       let urls = Object.keys(this.props.emojis).filter(emoji =>
-        emoji.includes(this.state.emojiSearchInput.trim())
+        emoji.includes(searchInput.trim())
       );
       this.setState({
         urls: urls.map(url => this.props.emojis[url])
@@ -83,15 +81,13 @@ export default class EmojiSearchContainer extends React.Component {
   render() {
     let emojiSearchButton = (
       <div className="emojiButton" onClick={this.props.toggleEmojiSearch}>
-        <span className="fas fa-grin-stars" />
-        =-D
+        <span className="fas fa-grin-stars">=-D</span>
       </div>
     );
     let emojiSearchBar = (
       <input
         className="emojiSearch"
         placeholder="Search for an emoji!"
-        value={this.state.emojiSearchInput}
         onChange={this.handleEmojiSearch}
       />
     );
